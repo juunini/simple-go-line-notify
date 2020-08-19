@@ -1,6 +1,6 @@
 # simple go line notify
 
-[![GoDoc](https://godoc.org/github.com/juunini/simple-go-line-notify?status.svg)](https://godoc.org/github.com/juunini/simple-go-line-notify)
+[![GoDoc](https://godoc.org/github.com/juunini/simple-go-line-notify/notify?status.svg)](https://godoc.org/github.com/juunini/simple-go-line-notify/notify)
 [![Build Status](https://travis-ci.org/juunini/simple-go-line-notify.svg?branch=master)](https://travis-ci.org/juunini/simple-go-line-notify)
 [![Go Report Card](https://goreportcard.com/badge/github.com/juunini/simple-go-line-notify)](https://goreportcard.com/report/github.com/juunini/simple-go-line-notify)
 
