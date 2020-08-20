@@ -33,3 +33,18 @@ if err := notify.SendImage(accessToken, message, imageURL); err != nil {
     panic(err)
 }
 ```
+
+### Send Notify With Sticker
+
+Sticker List is [See Here](https://devdocs.line.me/files/sticker_list.pdf)
+
+```go
+accessToken := "your-access-token"
+message := "your message. must not be empty"
+stickerPackageId := 1
+stickerId := 113
+
+if err := notify.SendSticker(accessToken, message, stickerPackageId, stickerId); err != nil {
+    panic(err)
+}
+```
