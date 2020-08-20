@@ -38,11 +38,13 @@ func TestSendTextEmptyMessage(t *testing.T) {
 }
 
 func TestSendTextSuccess(t *testing.T) {
-	accessToken, _ := ioutil.ReadFile("test_token.txt")
+	accessToken, err := ioutil.ReadFile("test_token.txt")
+	if err != nil {
+		return
+	}
 	message := "test"
 
-	err := notify.SendText(string(accessToken), message)
-	if err != nil {
+	if err := notify.SendText(string(accessToken), message); err != nil {
 		t.Log(err)
 		t.Fail()
 	}

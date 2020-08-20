@@ -17,7 +17,10 @@ func ExampleSendImage() {
 }
 
 func TestSendImage(t *testing.T) {
-	accessToken, _ := ioutil.ReadFile("test_token.txt")
+	accessToken, err := ioutil.ReadFile("test_token.txt")
+	if err != nil {
+		return
+	}
 	imageURL := "https://d.line-scdn.net/n/line_lp/img/ogimage.png"
 
 	if err := notify.SendImage(string(accessToken), "a", imageURL); err != nil {
