@@ -9,7 +9,6 @@ import (
 const lineNotifyApiURL = "https://notify-api.line.me/api/notify"
 
 func sendToLineServer(req *http.Request, accessToken string) (err error) {
-	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	req.Header.Set("Authorization", "Bearer "+accessToken)
 
 	client := &http.Client{}
