@@ -20,6 +20,7 @@ func SendImage(accessToken, message, imageURL string) (err error) {
 	if err != nil {
 		return
 	}
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	err = sendToLineServer(req, accessToken)
 	return

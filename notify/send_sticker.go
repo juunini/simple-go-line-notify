@@ -25,6 +25,7 @@ func SendSticker(accessToken, message string, stickerPackageId, stickerId int) (
 	if err != nil {
 		return
 	}
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	err = sendToLineServer(req, accessToken)
 	return
