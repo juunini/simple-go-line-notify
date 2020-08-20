@@ -12,10 +12,10 @@ package main
 import "github.com/juunini/simple-go-line-notify/notify"
 
 func main() {
-    bearer := "29jWoO****p70eK3AKA********ooHfusvDP6***ZmR"
+    accessToken := "29jWoO****p70eK3AKA********ooHfusvDP6***ZmR"
     message := "hello, world!"
 
-    if err := notify.SendText(bearer, message); err != nil {
+    if err := notify.SendText(accessToken, message); err != nil {
         panic(err)
     }
 }
