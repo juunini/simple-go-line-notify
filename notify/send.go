@@ -1,27 +1,16 @@
-// Use Line Notify REST API
-//
-// See Also
-//
-// https://engineering.linecorp.com/en/blog/using-line-notify-to-send-messages-to-line-from-the-command-line/
 package notify
 
 import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"net/url"
-	"strings"
 )
 
-// SendText : send line notify simple text
-func SendText(Bearer, message string) (err error) {
-	req, err := http.NewRequest("POST", "https://notify-api.line.me/api/notify", strings.NewReader(url.Values{"message": []string{message}}.Encode()))
-	if err != nil {
-		return
-	}
+const lineNotifyApiURL = "https://notify-api.line.me/api/notify"
 
+func sendToLineServer(req *http.Request, accessToken string) (err error) {
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-	req.Header.Set("Authorization", "Bearer "+Bearer)
+	req.Header.Set("Authorization", "Bearer "+accessToken)
 
 	client := &http.Client{}
 	client.CheckRedirect = func(req *http.Request, via []*http.Request) error {
