@@ -22,7 +22,7 @@ func main() {
 }
 ```
 
-### Send Notify With Image
+### Send Notify With Online Image
 
 ```go
 accessToken := "your-access-token"
@@ -30,6 +30,17 @@ message := "your message. must not be empty"
 imageURL := "image url. ex) https://..."
 
 if err := notify.SendImage(accessToken, message, imageURL); err != nil {
+    panic(err)
+}
+```
+
+### Send Notify With Local Image (only jpg, png)
+```go
+accessToken := "your-access-token"
+message := "your message. must not be empty"
+imagePath := "/your/image/path.png"
+
+if err := notify.SendLocalImage(accessToken, message, imagePath); err != nil {
     panic(err)
 }
 ```
