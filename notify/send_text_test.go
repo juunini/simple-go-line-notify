@@ -27,11 +27,13 @@ func TestSendTextInvalidAccessToken(t *testing.T) {
 }
 
 func TestSendTextEmptyMessage(t *testing.T) {
-	accessToken, _ := ioutil.ReadFile("test_token.txt")
+	accessToken, err := ioutil.ReadFile("test_token.txt")
+	if err != nil {
+		return
+	}
 	message := ""
 
-	err := notify.SendText(string(accessToken), message)
-	if !(err != nil && err.Error() == "400: message: must not be empty") {
+	if err := notify.SendText(string(accessToken), message); !(err != nil && err.Error() == "400: message: must not be empty") {
 		t.Log(err)
 		t.Fail()
 	}
