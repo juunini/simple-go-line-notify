@@ -10,7 +10,7 @@ import (
 func SendImage(accessToken, message, imageURL string) (err error) {
 	req, err := http.NewRequest(
 		"POST",
-		"https://notify-api.line.me/api/notify",
+		lineNotifyApiURL,
 		strings.NewReader(url.Values{
 			"message":        []string{message},
 			"imageThumbnail": []string{imageURL},

@@ -6,6 +6,15 @@ import (
 	"testing"
 )
 
+func ExampleSendText() {
+	accessToken := "29jWoO****p70eK3AKA********ooHfusvDP6***ZmR"
+	message := "hello, world!"
+
+	if err := notify.SendText(accessToken, message); err != nil {
+		panic(err)
+	}
+}
+
 func TestSendTextInvalidAccessToken(t *testing.T) {
 	accessToken := "29jWoO****p70eK3AKA********ooHfusvDP6***ZmR"
 	message := "hello, world!"
@@ -36,14 +45,5 @@ func TestSendTextSuccess(t *testing.T) {
 	if err != nil {
 		t.Log(err)
 		t.Fail()
-	}
-}
-
-func ExampleSendText() {
-	accessToken := "29jWoO****p70eK3AKA********ooHfusvDP6***ZmR"
-	message := "hello, world!"
-
-	if err := notify.SendText(accessToken, message); err != nil {
-		panic(err)
 	}
 }

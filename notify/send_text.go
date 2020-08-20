@@ -10,7 +10,7 @@ import (
 func SendText(accessToken, message string) (err error) {
 	req, err := http.NewRequest(
 		"POST",
-		"https://notify-api.line.me/api/notify",
+		lineNotifyApiURL,
 		strings.NewReader(url.Values{
 			"message": []string{message},
 		}.Encode()),
