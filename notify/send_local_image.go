@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"io"
 	"mime/multipart"
-	"net/http"
 	"os"
 	"strings"
 )
@@ -13,17 +12,7 @@ import (
 func SendLocalImage(accessToken, message, imagePath string) (err error) {
 	body, contentType, err := makeMultipartBody(message, imagePath)
 
-	req, err := http.NewRequest(
-		"POST",
-		lineNotifyApiURL,
-		&body,
-	)
-	if err != nil {
-		return
-	}
-	req.Header.Set("Content-Type", contentType)
-
-	err = sendToLineServer(req, accessToken)
+	err = sendToLineServer(&body, accessToken, contentType)
 	return
 }
 
