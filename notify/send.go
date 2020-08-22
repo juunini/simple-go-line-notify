@@ -3,12 +3,22 @@ package notify
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 )
 
 const lineNotifyApiURL = "https://notify-api.line.me/api/notify"
 
-func sendToLineServer(req *http.Request, accessToken string) (err error) {
+func sendToLineServer(body io.Reader, accessToken, contentType string) (err error) {
+	req, err := http.NewRequest(
+		"POST",
+		lineNotifyApiURL,
+		body,
+	)
+	if err != nil {
+		return
+	}
+	req.Header.Set("Content-Type", contentType)
 	req.Header.Set("Authorization", "Bearer "+accessToken)
 
 	client := &http.Client{}
@@ -21,18 +31,18 @@ func sendToLineServer(req *http.Request, accessToken string) (err error) {
 		return
 	}
 
-	var body struct {
+	var responseBody struct {
 		Status  int    `json:"status"`
 		Message string `json:"message"`
 	}
 
-	if err = json.NewDecoder(res.Body).Decode(&body); err != nil {
+	if err = json.NewDecoder(res.Body).Decode(&responseBody); err != nil {
 		return
 	}
 	defer res.Body.Close()
 
-	if body.Status != 200 {
-		err = fmt.Errorf("%d: %s", body.Status, body.Message)
+	if responseBody.Status != 200 {
+		err = fmt.Errorf("%d: %s", responseBody.Status, responseBody.Message)
 	}
 	return
 }
