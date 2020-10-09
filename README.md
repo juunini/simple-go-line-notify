@@ -1,9 +1,15 @@
-# simple go line notify
+# simple golang line notify
 
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/juunini/simple-go-line-notify/notify)](https://pkg.go.dev/github.com/juunini/simple-go-line-notify/notify)
 [![Build Status](https://travis-ci.org/juunini/simple-go-line-notify.svg?branch=master)](https://travis-ci.org/juunini/simple-go-line-notify)
 [![Go Report Card](https://goreportcard.com/badge/github.com/juunini/simple-go-line-notify)](https://goreportcard.com/report/github.com/juunini/simple-go-line-notify)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Install
+
+```bash
+go get -u github.com/juunini/simple-go-line-notify
+```
 
 ## Usage
 
